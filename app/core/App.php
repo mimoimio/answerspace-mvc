@@ -10,12 +10,15 @@ class App
         // check if there is a controller of that url name
 
         $url = $this->parseURL();
-        if ( isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php') ){
+        if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
             unset($url[0]);
         }
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
+        // echo "<pre>";
+        // var_dump($this->controller);
+        // echo "</pre>";
 
         if (isset($url[1])) {
             if (method_exists($this->controller, $url[1])) {
@@ -38,7 +41,6 @@ class App
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
-            var_dump($url);
             return $url ?? "Home";
         }
     }
