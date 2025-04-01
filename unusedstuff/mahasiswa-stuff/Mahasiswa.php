@@ -1,6 +1,10 @@
 <?php
 class Mahasiswa extends Controller
 {
+    public function __construct()
+    {
+        AuthMiddleware::requireAuth();
+    }
     public function index($name = "Mior")
     {
         $data["name"] = $name;
@@ -36,6 +40,18 @@ class Mahasiswa extends Controller
             header('Location: ' . BASEURL . '/mahasiswa');
         } else {
             Flasher::setFlash("Failed to", "deleted", "danger");
+            header('Location: ' . BASEURL . '/mahasiswa');
+        }
+    }
+    public function getEdit () {
+        echo json_encode($this->model('Mahasiswa_model')->getMahasiswaById($_POST["mahasiswa_id"]));
+    }
+    public function edit () {
+        if ($this->model('Mahasiswa_model')->editDataMahasiswa($_POST) > 0) {
+            Flasher::setFlash("Successfully", "edited", "success");
+            header('Location: ' . BASEURL . '/mahasiswa');
+        } else {
+            Flasher::setFlash("Failed", "edited", "danger");
             header('Location: ' . BASEURL . '/mahasiswa');
         }
     }

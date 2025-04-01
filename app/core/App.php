@@ -1,4 +1,5 @@
 <?php
+
 class App
 {
     protected $controller = 'Home';
@@ -8,7 +9,7 @@ class App
     public function __construct()
     {
         // check if there is a controller of that url name
-
+        // echo "App __construct";
         $url = $this->parseURL();
         if (isset($url[0]) && file_exists('../app/controllers/' . $url[0] . '.php')) {
             $this->controller = $url[0];
@@ -16,9 +17,6 @@ class App
         }
         require_once '../app/controllers/' . $this->controller . '.php';
         $this->controller = new $this->controller;
-        // echo "<pre>";
-        // var_dump($this->controller);
-        // echo "</pre>";
 
         if (isset($url[1])) {
             if (method_exists($this->controller, $url[1])) {
@@ -26,13 +24,9 @@ class App
                 unset($url[1]);
             }
         }
-
-        // params
         if (!empty($url)) {
             $this->params = array_values($url);
         }
-
-        // run controller & method, and include params 
         call_user_func_array([$this->controller, $this->method], $this->params);
     }
     public function parseURL()
@@ -41,7 +35,7 @@ class App
             $url = rtrim($_GET['url'], '/');
             $url = filter_var($url, FILTER_SANITIZE_URL);
             $url = explode('/', $url);
-            return $url ?? "Home";
+            return $url;
         }
     }
 }

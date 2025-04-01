@@ -1,8 +1,8 @@
 <?php
 class Mahasiswa_model{
     private $table = 'mahasiswa';
-    private $db; // database wrapper object
-
+    private $db; 
+    // database wrapper object
     // private $mhs = [
     //     [
     //         "name" => "Mior",
@@ -49,6 +49,25 @@ class Mahasiswa_model{
         $query = "DELETE FROM mahasiswa WHERE mahasiswa_id = :mahasiswa_id";
         $this->db->query($query);
         $this->db->bind('mahasiswa_id', $mahasiswa_id);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+    public function editDataMahasiswa($data) {
+        $query = "UPDATE mahasiswa SET
+                    name = :name,
+                    nomatric = :nomatric,
+                    email = :email,
+                    course = :course
+                    WHERE mahasiswa_id = :mahasiswa_id";
+
+        $this->db->query($query);
+        $this->db->bind('name', $data['name']);
+        $this->db->bind('nomatric', $data['nomatric']);
+        $this->db->bind('email', $data['email']);
+        $this->db->bind('course', $data['course']);
+        $this->db->bind('mahasiswa_id', $data['mahasiswa_id']);
+
         $this->db->execute();
 
         return $this->db->rowCount();

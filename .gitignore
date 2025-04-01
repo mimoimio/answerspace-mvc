@@ -1,0 +1,9 @@
+# MySQL data directory
+mysql_data/
+
+# Other common files to ignore
+.env
+.DS_Store
+.vscode/
+.idea/
+*.log

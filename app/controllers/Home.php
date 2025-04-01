@@ -1,9 +1,10 @@
 <?php
 class Home extends Controller{
-    public function index($name = "Mior") {
-        $data["name"] = $name;
+    public function __construct() {
+    }
+    public function index() {
+        $data["answers"] = $this->model('Answer_model')->getAllAnswer();
         $data["title"] = "Home Page";
-        $data["model"] = $this->model('User_model')->getUser();
         $this->view('templates/header', $data);
         $this->view('home/index', $data);
         $this->view('templates/footer');

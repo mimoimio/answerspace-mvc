@@ -7,10 +7,10 @@
     </div>
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6">
 
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary addDataButton" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Data Mahasiswa
             </button>
 
@@ -20,14 +20,16 @@
 
             <ul class="list-group mb-4 shadow">
                 <?php foreach ($data["mhs"] as $mahasiswa): ?>
-                    <li class="list-group-item">
-                        <!-- d-flex flex-row justify-content-between -->
-                        <div class="d-inline">
+                    <li class="list-group-item d-flex flex-row justify-content-between">
+                        <div class="d-flex flex-column">
                             <span class="text-uppercase"><?= $mahasiswa["name"] ?></span>
-                            <span class="font-weight-light text-secondary">[<?= $mahasiswa["nomatric"] ?>]</span>
+                            <spantext-secondary">[<?= $mahasiswa["nomatric"] ?>]</span>
                         </div>
-                        <a class="btn btn-danger float-end ms-2" href="<?= BASEURL ?>/mahasiswa/delete/<?= $mahasiswa["mahasiswa_id"] ?>" class="font-weight-light" onclick="return confirm('Are you sure?')">delete</a>
-                        <a class="btn btn-primary float-end ms-2" href="<?= BASEURL ?>/mahasiswa/detail/<?= $mahasiswa["mahasiswa_id"] ?>" class="font-weight-light">detail</a>
+                        <div class="d-flex align-items-center">
+                            <a class="btn btn-primary ms-2" href="<?= BASEURL ?>/mahasiswa/detail/<?= $mahasiswa["mahasiswa_id"] ?>">detail</a>
+                            <a class="btn btn-success ms-2 showEditForm" href="<?= BASEURL ?>/mahasiswa/edit/<?= $mahasiswa["mahasiswa_id"] ?>" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $mahasiswa["mahasiswa_id"] ?>">Edit</a>
+                            <a class="btn btn-danger ms-2" href="<?= BASEURL ?>/mahasiswa/delete/<?= $mahasiswa["mahasiswa_id"] ?>" onclick="return confirm('Are you sure?')">delete</a>
+                        </div>
                     <?php endforeach; ?>
             </ul>
         </div>
@@ -35,18 +37,18 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data Mahasiswa</h1>
+                <h1 class="modal-title fs-5" id="formModalLabel">Tambah Data Mahasiswa</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
 
                 <form action="<?= BASEURL ?>/mahasiswa/add" method="post">
-
+                    <input type="hidden" name="mahasiswa_id" id="mahasiswa_id">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Ali bin Abu">

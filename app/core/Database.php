@@ -2,6 +2,7 @@
 /**
  * Summary of Database:
  * A Database Wrapper Class
+ *  
  */
 class Database {
     private $host = DB_HOST;

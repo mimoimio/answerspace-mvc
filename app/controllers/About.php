@@ -1,21 +1,15 @@
 <?php
 class About extends Controller
 {
-    public function index($name = "Mior", $job = "DevOps", $age = 20)
+    public function __construct(){
+        // AuthMiddleware::requireAuth();
+    }
+    public function index()
     {
-        $data["name"] = $name;
-        $data["job"] = $job;
-        $data["age"] = $age;
         $data["title"] = "About Page";
+        $data["users"] = $this->model('User_model')->getAllUser();
         $this->view('templates/header', $data);
         $this->view('about/index', $data);
-        $this->view('templates/footer');
-    }
-    public function page()
-    {
-        $data["title"] = "My Pages";
-        $this->view('templates/header', $data);
-        $this->view('about/page', $data);
         $this->view('templates/footer');
     }
 }
