@@ -15,7 +15,7 @@ class Answer extends Controller
             if (!$data["answer"]) {
                 // Answer not found, redirect to home
                 Flasher::setFlash("Answer", "not found", "danger");
-                header("Location: " . BASEURL);
+                header("Location: /");
                 exit();
             }
             $data["title"] = "Answer Detail";
@@ -42,11 +42,11 @@ class Answer extends Controller
             ]);
             if ($result > 0) {
                 Flasher::setFlash("Answer", "posted successfully", "success");
-                header("Location: " . BASEURL);
+                header("Location: /");
                 exit();
             } else {
                 Flasher::setFlash("Failed to", "post answer", "danger");
-                header("Location: " . BASEURL . "/answer");
+                header("Location: /answer");
                 exit();
             }
         }
