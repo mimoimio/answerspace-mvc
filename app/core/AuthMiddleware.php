@@ -9,7 +9,7 @@ class AuthMiddleware
     public static function requireAuth()
     {
         if (!isset($_SESSION["user"])) {
-            header("Location: " . BASEURL . "/authentication");
+            header("Location: /authentication");
             exit();  // Important: Add exit after redirect
         }
     }
@@ -21,7 +21,7 @@ class AuthMiddleware
     public static function requireGuest()
     {
         if (isset($_SESSION["user"])) {
-            header("Location: " . BASEURL);
+            header("Location: /");
             exit();  // Important: Add exit after redirect
         }
     }

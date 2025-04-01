@@ -11,7 +11,7 @@ class Profile extends Controller
     {
         session_destroy();
         Flasher::setFlash("Logged", "out successfully", "success");
-        header("Location: " . BASEURL . "/");
+        header("Location: /");
         exit();
     }
 

@@ -30,14 +30,14 @@ class Authentication extends Controller
             // Basic validation
             if ($password !== $confirm_password) {
                 Flasher::setFlash("Passwords", "do not match", "danger");
-                header("Location: " . BASEURL . "/authentication/register");
+                header("Location: /authentication/register");
                 exit();
             }
 
             // Check if username already exists
             if ($this->model('User_model')->getUserByUsername($username)) {
                 Flasher::setFlash("Username", "already exists", "danger");
-                header("Location: " . BASEURL . "/authentication/register");
+                header("Location: /authentication/register");
                 exit();
             }
 
