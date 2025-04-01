@@ -49,11 +49,11 @@ class Authentication extends Controller
 
             if ($result > 0) {
                 Flasher::setFlash("Registration", "successful", "success");
-                header("Location: " . BASEURL . "/authentication");
+                header("Location: /authentication");
                 exit();
             } else {
                 Flasher::setFlash("Registration", "failed", "danger");
-                header("Location: " . BASEURL . "/authentication/register");
+                header("Location: /authentication/register");
                 exit();
             }
         }
@@ -69,11 +69,11 @@ class Authentication extends Controller
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION["user"] = $user;
                 Flasher::setFlash("Welcome back", $username, "success");
-                header("Location: " . BASEURL);
+                header("Location: /");
                 exit();
             } else {
                 Flasher::setFlash("Invalid", "username or password", "danger");
-                header("Location: " . BASEURL . "/authentication");
+                header("Location: /authentication");
                 exit();
             }
         }
