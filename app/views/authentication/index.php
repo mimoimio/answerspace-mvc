@@ -7,7 +7,7 @@
 
     <h1 class="display-3">Login</h1>
     
-    <form class="needs-validation" novalidate action="<?= BASEURL; ?>/authentication/login" method="POST">
+    <form class="needs-validation" novalidate action="/authentication/login" method="POST">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name="username" required>
@@ -22,7 +22,7 @@
                 Please enter your password.
             </div>
         </div>
-        <a href="<?= BASEURL; ?>/authentication/register" class="btn btn-secondary">Register</a>
+        <a href="/authentication/register" class="btn btn-secondary">Register</a>
         <button class="btn btn-primary" type="submit">Login</button>
     </form>
 </div>

@@ -13,11 +13,12 @@
             <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
         </p> -->
     </div>
+    <?php $this->component('news'); ?>
     <div class="container">
         <div class="row">
             <?php foreach ($data["answers"] as $answer) : ?>
                 <div class="col-md-4  mb-4 ">
-                    <a href="<?= BASEURL ?>/answer/index/<?= $answer['answer_id'] ?>" class="text-decoration-none">
+                    <a href="/answer/<?= $answer['answer_id'] ?>" class="text-decoration-none">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title text-truncate"><?= $answer["answer_text"] ?></h5>

@@ -1,25 +1,16 @@
 <div class="container mt-4">
-    <!-- News/Announcement Section -->
-    <div class="alert alert-info mb-4" role="alert">
-        <h4 class="alert-heading text-center">🌙 MAT RI YAAAAA 🌙</h4>
-        <p class="text-center mb-0">Selamat Hari Raya Maaf Zahir dan Batin</p>
-        <hr>
-        <p class="small text-center mb-0">
-            Kami (mior muhammad adib) mengucapkan Selamat Hari Raya kepada semua pengguna AnswerSpace (<?= count($data["users"])." orang!!!" ;?>). 
-            Semoga kita semua diberkati dengan kebahagiaan dan kesejahteraan.
-        </p>
-    </div>
 
     <h1 class="display-3 mb-4">About AnswerSpace</h1>
-    
+
+    <?php $this->component('news'); ?>
     <div class="row">
         <div class="col-lg-8">
             <div class="card mb-4">
                 <div class="card-body">
                     <h2 class="card-title h4">What is AnswerSpace?</h2>
                     <p class="card-text">
-                        AnswerSpace is a community-driven platform where users can share knowledge and insights. 
-                        Think of it as a collaborative space where questions meet answers, creating a valuable 
+                        AnswerSpace is a community-driven platform where users can share knowledge and insights.
+                        Think of it as a collaborative space where questions meet answers, creating a valuable
                         knowledge repository for everyone.
                     </p>
                 </div>
@@ -80,8 +71,8 @@
                 <div class="card-body">
                     <h2 class="card-title h4">Our Mission</h2>
                     <p class="card-text">
-                        We believe in the power of shared knowledge. Our mission is to create a space where 
-                        everyone can contribute their expertise and learn from others. Whether you're a 
+                        We believe in the power of shared knowledge. Our mission is to create a space where
+                        everyone can contribute their expertise and learn from others. Whether you're a
                         beginner or an expert, AnswerSpace is your platform to grow and share.
                     </p>
                 </div>
@@ -118,7 +109,7 @@
                     <p class="card-text">
                         Ready to be part of our growing community? Start sharing your knowledge today!
                     </p>
-                    <a href="<?= BASEURL ?>/answer" class="btn btn-primary w-100">Post Your First Answer</a>
+                    <a href="/answer" class="btn btn-primary w-100">Post Your First Answer</a>
                 </div>
             </div>
         </div>

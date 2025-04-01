@@ -1,6 +1,6 @@
 <div class="row container m-auto mt-4">
     <div class="col-lg-6">
-        <a href="<?= BASEURL ?>/" class="btn btn-outline-secondary">return</a>
+        <a href="/" class="btn btn-outline-secondary">return</a>
     </div>
 </div>
 <div class="container p-4">

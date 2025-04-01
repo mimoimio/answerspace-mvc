@@ -14,7 +14,7 @@
     <div class="row mt-4">
         <?php foreach ($data["answers"] as $answer) : ?>
             <div class="col-4 mb-4">
-                <a href="<?= BASEURL ?>/answer/index/<?= $answer['answer_id'] ?>" class="text-decoration-none">
+                <a href="/answer/<?= $answer['answer_id'] ?>" class="text-decoration-none">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title text-truncate"><?= $answer["answer_text"] ?></h5>
