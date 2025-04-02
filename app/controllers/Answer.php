@@ -32,6 +32,7 @@ class Answer extends Controller
     }
     public function add()
     {
+        AuthMiddleware::requireAuth();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $answer_text = $_POST["answer_text"];
             $user_id = $_SESSION["user"]["user_id"];
