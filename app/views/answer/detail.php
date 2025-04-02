@@ -12,7 +12,7 @@
 
     <h1 class="display-6">Answer Detail</h1>
     <div class="row">
-        <div class="col-6 mx-auto">
+        <div class="col-lg-6 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><?= $data["answer"]["answer_text"] ?></h5>

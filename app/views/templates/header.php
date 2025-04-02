@@ -5,15 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/image/favicon.ico">
+
     <title><?= $data["title"]; ?></title>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="/">AnswerSpace</a>
+            <a class="navbar-brand" href="/">
+                <img src="/image/android-chrome-512x512.png" alt="AnswerSpace Logo" width="40" height="40" class="me-2">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="navbar-toggler-icon">
+                </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto">

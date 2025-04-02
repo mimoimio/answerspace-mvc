@@ -1,6 +1,8 @@
 <div class="container mt-4">
 
-    <h1 class="display-3 mb-4">About AnswerSpace</h1>
+
+    <h1 class="display-3 mb-4">About AnswerSpace<p class="display-6 text-muted">Now built with MVC pattern</p>
+    </h1>
 
     <?php $this->component('news'); ?>
     <div class="row">
@@ -9,9 +11,7 @@
                 <div class="card-body">
                     <h2 class="card-title h4">What is AnswerSpace?</h2>
                     <p class="card-text">
-                        AnswerSpace is a community-driven platform where users can share knowledge and insights.
-                        Think of it as a collaborative space where questions meet answers, creating a valuable
-                        knowledge repository for everyone.
+                        AnswerSpace is a copycat version of <a href="https://ideaspace.nrmnqdds.com">IdeaSpace</a>.
                     </p>
                 </div>
             </div>
