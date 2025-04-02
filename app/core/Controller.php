@@ -10,7 +10,7 @@ class Controller
     public function component($component, $data = [])
     {
         ob_start();
-        require_once "../app/views/templates/$component.php";
+        require "../app/views/templates/$component.php";
         return ob_get_clean();
     }
 
