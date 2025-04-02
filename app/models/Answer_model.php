@@ -11,7 +11,7 @@ class Answer_model
 
     public function getAllAnswer()
     {
-        $this->db->query('SELECT a.answer_id, a.answer_text, a.time_created, a.user_id, u.username 
+        $this->db->prepare('SELECT a.answer_id, a.answer_text, a.time_created, a.user_id, u.username 
                          FROM ' . $this->table . ' a 
                          JOIN users u ON a.user_id = u.user_id
                          ORDER BY a.time_created DESC');
@@ -20,7 +20,7 @@ class Answer_model
 
     public function getAnswerById($answer_id)
     {
-        $this->db->query('SELECT a.answer_id, a.answer_text, a.time_created, a.user_id, u.username 
+        $this->db->prepare('SELECT a.answer_id, a.answer_text, a.time_created, a.user_id, u.username 
                          FROM ' . $this->table . ' a 
                          JOIN users u ON a.user_id = u.user_id 
                          WHERE a.answer_id=:answer_id
@@ -31,7 +31,7 @@ class Answer_model
 
     public function getAnswerByUserId($user_id)
     {
-        $this->db->query('SELECT a.answer_id, a.answer_text, a.time_created, a.user_id, u.username 
+        $this->db->prepare('SELECT a.answer_id, a.answer_text, a.time_created, a.user_id, u.username 
                          FROM ' . $this->table . ' a 
                          JOIN users u ON a.user_id = u.user_id 
                          WHERE a.user_id=:user_id
@@ -45,7 +45,7 @@ class Answer_model
         $query = "INSERT INTO answers (answer_text, user_id) 
                  VALUES (:answer_text, :user_id)";
 
-        $this->db->query($query);
+        $this->db->prepare($query);
         $this->db->bind('answer_text', $data['answer_text']);
         $this->db->bind('user_id', $data['user_id']);
         $this->db->execute();

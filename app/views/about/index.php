@@ -11,7 +11,7 @@
                 <div class="card-body">
                     <h2 class="card-title h4">What is AnswerSpace?</h2>
                     <p class="card-text">
-                        AnswerSpace is a copycat version of <a href="https://ideaspace.nrmnqdds.com">IdeaSpace</a>.
+                        AnswerSpace is a copycat version of <a href="https://ideaspace.nrmnqdds.com">IdeaSpace</a>. Built with PHP, 
                     </p>
                 </div>
             </div>
