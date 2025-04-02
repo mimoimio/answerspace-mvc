@@ -4,7 +4,7 @@ class Home extends Controller{
     }
     public function index() {
         $data["answers"] = $this->model('Answer_model')->getAllAnswer();
-        $data["title"] = "Home Page";
+        $data["title"] = "AnswerSpace";
         $this->view('templates/header', $data);
         $this->view('home/index', $data);
         $this->view('templates/footer');

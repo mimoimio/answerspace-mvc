@@ -34,7 +34,8 @@ class Answer_model
         $this->db->query('SELECT a.answer_id, a.answer_text, a.time_created, a.user_id, u.username 
                          FROM ' . $this->table . ' a 
                          JOIN users u ON a.user_id = u.user_id 
-                         WHERE a.user_id=:user_id');
+                         WHERE a.user_id=:user_id
+                         ORDER BY a.time_created DESC');
         $this->db->bind('user_id', $user_id);
         return $this->db->resultSet();
     }
