@@ -42,11 +42,14 @@ class Answer_model
 
     public function addAnswer($data)
     {
+        // Sanitize user input
+        $answer_text = htmlspecialchars(strip_tags($data['answer_text']));
+
         $query = "INSERT INTO answers (answer_text, user_id) 
                  VALUES (:answer_text, :user_id)";
-
-        $this->db->prepare($query);
-        $this->db->bind('answer_text', $data['answer_text']);
+      
+        $this->db->query($query);
+        $this->db->bind('answer_text', $answer_text );
         $this->db->bind('user_id', $data['user_id']);
         $this->db->execute();
 
