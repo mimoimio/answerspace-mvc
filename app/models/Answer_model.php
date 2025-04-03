@@ -55,4 +55,21 @@ class Answer_model
 
         return $this->db->rowCount();
     }
+    public function deleteAnswer($answer_id){
+        $query = 'DELETE FROM '. $this->table .' WHERE answer_id = :answer_id';
+        $this->db->prepare($query);
+        $this->db->bind('answer_id', $answer_id);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
+    public function updateAnswer($data){
+        $query = "UPDATE answers SET answer_text = :answer_text WHERE answer_id = :answer_id";
+        $this->db->prepare($query);
+        $this->db->bind('answer_text', $data['answer_text']);
+        $this->db->bind('answer_id', $data['answer_id']);
+        $this->db->execute();
+
+        return $this->db->rowCount();
+    }
 }

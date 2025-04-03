@@ -20,6 +20,7 @@ class Answer extends Controller
             }
             $data["title"] = "Answer Detail";
             $this->view('templates/header', $data);
+            var_dump($answer_id);
             $this->view('answer/detail', $data);
             $this->view('templates/footer');
         } else {
@@ -52,4 +53,76 @@ class Answer extends Controller
             }
         }
     }
+    public function delete($answer_id)
+    {
+        AuthMiddleware::requireAuth();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // only allow the user who created the answer to delete it
+            if ($this->model('Answer_model')->getAnswerById($answer_id)['user_id'] != $_SESSION['user']['user_id']) {
+                Flasher::setFlash("You don't have permission to delete this answer", "", "danger");
+                header("Location: /");
+                exit();
+            } else {
+                $result = $this->model('Answer_model')->deleteAnswer($answer_id);
+                if ($result > 0) {
+                    Flasher::setFlash("Answer", "deleted successfully", "success");
+                    header("Location: /");
+                    exit();
+                } else {
+                    Flasher::setFlash("Failed to", "delete answer", "danger");
+                    header("Location: /");
+                    exit();
+                }
+            }
+        }else{
+            header("Location: /");
+            exit();
+        }
+    }
+    public function update($answer_id)
+    {
+        AuthMiddleware::requireAuth();
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // only allow the user who created the answer to edit it
+            if ($this->model('Answer_model')->getAnswerById($answer_id)['user_id'] != $_SESSION['user']['user_id']) {
+                Flasher::setFlash("You don't have permission to edit this answer", "", "danger");
+                header("Location: /");
+                exit();
+            }
+            $answer_text = $_POST["answer_text"];
+            $user_id = $_SESSION["user"]["user_id"];
+            $result = $this->model('Answer_model')->updateAnswer([
+                'answer_text' => $answer_text,
+                'user_id' => $user_id,
+                'answer_id' => $answer_id
+            ]);
+            if ($result > 0) {
+                Flasher::setFlash("Answer", "updated successfully", "success");
+                header("Location: /profile");
+                exit();
+            } else {
+                Flasher::setFlash("Failed to", "update answer", "danger");
+                header("Location: /answer/edit/$answer_id");
+                exit();
+            }
+        }
+
+    }
+    public function edit($answer_id)
+    {
+        AuthMiddleware::requireAuth();
+        $data["answer"] = $this->model('Answer_model')->getAnswerById($answer_id);
+        if (!$data["answer"]) {
+            // Answer not found, redirect to home
+            Flasher::setFlash("Answer", "not found", "danger");
+            header("Location: /");
+            exit();
+        }
+        $data["title"] = "Edit Answer";
+        $this->view('templates/header', $data);
+        $this->view('answer/edit', $data);
+        $this->view('templates/footer');
+    }
+
+
 }

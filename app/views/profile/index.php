@@ -1,4 +1,9 @@
 <div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+            <?php Flasher::flash(); ?>
+        </div>
+    </div>
     <h1 class="display-3 mt-4">Your Profile</h1>
     <div class="row">
         <div class="col-8 mx-auto">
@@ -13,7 +18,7 @@
     <h1 class="display-6 mt-4">Your Answers</h1>
     <div class="row mt-4">
         <?php foreach ($data["answers"] as $answer) : ?>
-            <?= $this->rayafication($this->component('answer_card', $answer)); ?>
+            <?= $this->rayafication($this->component('profile_answer_card', $answer)); ?>
         <?php endforeach; ?>
     </div>
 
