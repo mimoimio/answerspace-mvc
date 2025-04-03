@@ -31,6 +31,10 @@ class Database {
         $this->stmt = $this-> db ->prepare($query);
     }
 
+    public function prepare($query){
+        $this->stmt = $this->db->prepare($query);
+    }
+
     public function bind($param, $value, $type=null){
         if (is_null($type)){
             switch( true ) {
