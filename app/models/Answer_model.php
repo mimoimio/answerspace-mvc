@@ -49,7 +49,7 @@ class Answer_model
                  VALUES (:answer_text, :user_id)";
       
         $this->db->query($query);
-        $this->db->bind('answer_text', $data['answer_text']);
+        $this->db->bind('answer_text', $answer_text );
         $this->db->bind('user_id', $data['user_id']);
         $this->db->execute();
 
