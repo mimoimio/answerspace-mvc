@@ -7,7 +7,7 @@
 
     <h1 class="display-3">Login</h1>
     
-    <form class="needs-validation" novalidate action="/authentication/login" method="POST">
+    <form class="w-50 needs-validation" novalidate action="/authentication/login" method="POST">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
             <input type="text" class="form-control" id="username" name="username" required>

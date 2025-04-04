@@ -19,7 +19,7 @@ class Profile extends Controller
     public function index()
     {
         $data["title"] = "Profile";
-        $data["answers"] = $this->model('Answer_model')->getAnswerByUserId($_SESSION["user"]["user_id"]);
+        $data["answers"] = $this->model('AnswerRepository')->getAnswerByUserId($_SESSION["user"]["user_id"]);
         $data["user"] = $_SESSION["user"];
         $this->view('templates/header', $data);
         $this->view('profile/index', $data);
