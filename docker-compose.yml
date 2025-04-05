@@ -2,7 +2,7 @@ services:
   web:
     image: php:8.2-apache #check the php version you need for your project
     ports:
-      - "80:80" #this line maps your pc port to the container port
+      - "8000:80" #this line maps your pc port to the container port
     depends_on:
       - db #this line links this container to the db container
     volumes:
@@ -26,11 +26,11 @@ services:
       - ./mysql_data:/var/lib/mysql #this line maps the content of ./mysql_data in your pc to the /var/lib/mysql of the container
       - ./init-sql:/docker-entrypoint-initdb.d # ✅ Add this to execute SQL on startup
 
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    ports:
-      - "8080:80" #this line maps your pc port to the container port
-    depends_on:
-      - db #this line links this container to the db container
-    environment:
-      PMA_HOST: db
+#  phpmyadmin:
+#    image: phpmyadmin/phpmyadmin
+#    ports:
+#      - "8080:80" #this line maps your pc port to the container port
+#    depends_on:
+#      - db #this line links this container to the db container
+#    environment:
+#      PMA_HOST: db

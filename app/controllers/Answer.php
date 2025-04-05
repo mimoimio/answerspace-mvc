@@ -11,7 +11,7 @@ class Answer extends Controller
     {
         if ($answer_id) {
             // Show specific answer detail page
-            $data["answer"] = $this->model('Answer_model')->getAnswerById($answer_id);
+            $data["answer"] = $this->model('AnswerRepository')->getAnswerById($answer_id);
             if (!$data["answer"]) {
                 // Answer not found, redirect to home
                 Flasher::setFlash("Answer", "not found", "danger");
@@ -20,7 +20,6 @@ class Answer extends Controller
             }
             $data["title"] = "Answer Detail";
             $this->view('templates/header', $data);
-            var_dump($answer_id);
             $this->view('answer/detail', $data);
             $this->view('templates/footer');
         } else {
@@ -38,7 +37,7 @@ class Answer extends Controller
             $answer_text = $_POST["answer_text"];
             $user_id = $_SESSION["user"]["user_id"];
 
-            $result = $this->model('Answer_model')->addAnswer([
+            $result = $this->model('AnswerRepository')->addAnswer([
                 'answer_text' => $answer_text,
                 'user_id' => $user_id
             ]);
@@ -58,12 +57,12 @@ class Answer extends Controller
         AuthMiddleware::requireAuth();
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // only allow the user who created the answer to delete it
-            if ($this->model('Answer_model')->getAnswerById($answer_id)['user_id'] != $_SESSION['user']['user_id']) {
+            if ($this->model('AnswerRepository')->getAnswerById($answer_id)['user_id'] != $_SESSION['user']['user_id']) {
                 Flasher::setFlash("You don't have permission to delete this answer", "", "danger");
                 header("Location: /");
                 exit();
             } else {
-                $result = $this->model('Answer_model')->deleteAnswer($answer_id);
+                $result = $this->model('AnswerRepository')->deleteAnswer($answer_id);
                 if ($result > 0) {
                     Flasher::setFlash("Answer", "deleted successfully", "success");
                     header("Location: /");
@@ -84,14 +83,14 @@ class Answer extends Controller
         AuthMiddleware::requireAuth();
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // only allow the user who created the answer to edit it
-            if ($this->model('Answer_model')->getAnswerById($answer_id)['user_id'] != $_SESSION['user']['user_id']) {
+            if ($this->model('AnswerRepository')->getAnswerById($answer_id)['user_id'] != $_SESSION['user']['user_id']) {
                 Flasher::setFlash("You don't have permission to edit this answer", "", "danger");
                 header("Location: /");
                 exit();
             }
             $answer_text = $_POST["answer_text"];
             $user_id = $_SESSION["user"]["user_id"];
-            $result = $this->model('Answer_model')->updateAnswer([
+            $result = $this->model('AnswerRepository')->updateAnswer([
                 'answer_text' => $answer_text,
                 'user_id' => $user_id,
                 'answer_id' => $answer_id
@@ -111,7 +110,7 @@ class Answer extends Controller
     public function edit($answer_id)
     {
         AuthMiddleware::requireAuth();
-        $data["answer"] = $this->model('Answer_model')->getAnswerById($answer_id);
+        $data["answer"] = $this->model('AnswerRepository')->getAnswerById($answer_id);
         if (!$data["answer"]) {
             // Answer not found, redirect to home
             Flasher::setFlash("Answer", "not found", "danger");

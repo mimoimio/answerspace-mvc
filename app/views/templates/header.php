@@ -33,8 +33,8 @@
                     <?php else : ?>
                         <!-- Show these links when user is not logged in -->
                         <a class="nav-link" aria-current="page" href="/">Home</a>
-                        <a class="nav-link" href="/about/">About</a>
-                        <a class="btn btn-primary" href="/authentication">Login</a>
+                        <a class="nav-link me-2" href="/about/">About</a>
+                        <a class="btn btn-primary ml-1" href="/authentication">Login</a>
                     <?php endif; ?>
                 </div>
             </div>

@@ -42,7 +42,7 @@
         <h1 class="display-1 text-center mb-5 masked-heading ">AnswerSpace</h1>
     </div>
     <?= $this->rayafication($this->component('news')); ?>
-    <div class="container">
+    <div class="">
         <div class="row">
             <?php foreach ($data["answers"] as $answer) : ?>
                 <?= $this->rayafication($this->component('answer_card', $answer)); ?>

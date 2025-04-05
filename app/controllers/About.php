@@ -7,7 +7,7 @@ class About extends Controller
     public function index()
     {
         $data["title"] = "About Page";
-        $data["users"] = $this->model('User_model')->getAllUser();
+        $data["users"] = $this->model('UserRepository')->getAllUser();
         $this->view('templates/header', $data);
         $this->view('about/index', $data);
         $this->view('templates/footer');

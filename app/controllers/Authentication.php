@@ -35,14 +35,14 @@ class Authentication extends Controller
             }
 
             // Check if username already exists
-            if ($this->model('User_model')->getUserByUsername($username)) {
+            if ($this->model('UserRepository')->getUserByUsername($username)) {
                 Flasher::setFlash("Username", "already exists", "danger");
                 header("Location: /authentication/register");
                 exit();
             }
 
             // Register the user
-            $result = $this->model('User_model')->addUser([
+            $result = $this->model('UserRepository')->addUser([
                 'username' => $username,
                 'password' => $password
             ]);
@@ -64,7 +64,7 @@ class Authentication extends Controller
             $username = $_POST["username"];
             $password = $_POST["password"];
 
-            $user = $this->model('User_model')->getUserByUsername($username);
+            $user = $this->model('UserRepository')->getUserByUsername($username);
 
             if ($user && password_verify($password, $user['password'])) {
                 $_SESSION["user"] = $user;
